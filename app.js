@@ -242,10 +242,10 @@ function openModal(alertId) {
 
     <h3>Evidencia visual</h3>
     <div class="evidence-grid">
-      <div class="evidence">Imagen aérea del sector</div>
-      <div class="evidence">Zoom de copa</div>
-      <div class="evidence">Comparación con zona sana</div>
-      <div class="evidence">Comparación con vuelo anterior</div>
+      <figure class="evidence with-image"><img src="assets/overview-aerial.svg" alt="Vista general del fundo" /><figcaption>Vista general del fundo</figcaption></figure>
+      <figure class="evidence with-image"><img src="assets/anomaly-closeup.svg" alt="Zoom de la zona prioritaria" /><figcaption>Zoom de la zona prioritaria</figcaption></figure>
+      <figure class="evidence with-image"><img src="assets/healthy-compare.svg" alt="Comparación con una referencia sana" /><figcaption>Comparación con una referencia sana</figcaption></figure>
+      <figure class="evidence with-image"><img src="assets/field-inspection.svg" alt="Validación en campo" /><figcaption>Qué se valida en campo</figcaption></figure>
     </div>
 
     <h3>Qué validar en campo</h3>
@@ -383,6 +383,32 @@ function bindEvents() {
   sections.forEach(section => observer.observe(section));
 }
 
+
+function formatMoney(value) {
+  return new Intl.NumberFormat("es-PE", { style: "currency", currency: "PEN", maximumFractionDigits: 0 }).format(value);
+}
+
+function updateImpactSimulator() {
+  const total = parseFloat(document.getElementById("simTotalArea")?.value || "0");
+  const priority = parseFloat(document.getElementById("simPriorityArea")?.value || "0");
+  const minutesPerHa = parseFloat(document.getElementById("simMinutesPerHa")?.value || "0");
+  const teamSize = parseFloat(document.getElementById("simTeamSize")?.value || "1");
+  const hourlyCost = parseFloat(document.getElementById("simHourlyCost")?.value || "0");
+
+  const safePriority = Math.min(priority, total);
+  const areaAvoided = Math.max(total - safePriority, 0);
+  const allHours = teamSize > 0 ? (total * minutesPerHa / 60) / teamSize : 0;
+  const focusedHours = teamSize > 0 ? (safePriority * minutesPerHa / 60) / teamSize : 0;
+  const hoursSaved = Math.max(allHours - focusedHours, 0);
+  const laborHoursSaved = hoursSaved * Math.max(teamSize, 1);
+  const costSaved = laborHoursSaved * hourlyCost;
+
+  document.getElementById("simAreaAvoided").textContent = `${areaAvoided.toFixed(1)} ha`;
+  document.getElementById("simHoursSaved").textContent = `${hoursSaved.toFixed(1)} h`;
+  document.getElementById("simCostSaved").textContent = formatMoney(costSaved);
+  document.getElementById("simNarrative").textContent = `El equipo puede empezar por ${safePriority.toFixed(1)} ha en vez de recorrer ${total.toFixed(1)} ha completas.`;
+}
+
 function init() {
   renderRouteList();
   renderAlerts();
@@ -390,6 +416,10 @@ function init() {
   renderTasks();
   setActiveAlert(activeAlertId);
   bindEvents();
+  updateImpactSimulator();
+  ["simTotalArea", "simPriorityArea", "simMinutesPerHa", "simTeamSize", "simHourlyCost"].forEach(id => {
+    document.getElementById(id)?.addEventListener("input", updateImpactSimulator);
+  });
 }
 
 init();

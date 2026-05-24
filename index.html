@@ -27,6 +27,7 @@
         <a class="nav-item" href="#tareas" data-nav="tareas">Tareas</a>
         <a class="nav-item" href="#historial" data-nav="historial">Historial</a>
         <a class="nav-item" href="#kpis" data-nav="kpis">KPIs</a>
+        <a class="nav-item" href="#impacto" data-nav="impacto">Impacto</a>
       </nav>
 
       <div class="rail-note">
@@ -139,6 +140,48 @@
       <section class="section-card quiet-insight">
         <span class="overline">Lectura rápida</span>
         <p>En vez de recorrer todo el fundo, el equipo puede iniciar por el <strong>8.7%</strong> del área que concentra las señales visuales más relevantes. El objetivo es confirmar en campo antes de tomar acciones de riego, sanidad o nutrición.</p>
+      </section>
+
+
+      <section class="section-card visuals-section" id="visuales">
+        <div class="section-title">
+          <div>
+            <span class="overline">Cómo leer el reporte</span>
+            <h2>Apóyate en imágenes para entender más rápido</h2>
+          </div>
+          <p>Estas vistas ayudan a explicar por qué una zona aparece primero en la ruta de revisión.</p>
+        </div>
+
+        <div class="visual-grid">
+          <article class="visual-card">
+            <img src="assets/overview-aerial.svg" alt="Vista aérea ilustrada del fundo con zonas de revisión" />
+            <div class="visual-copy">
+              <h3>1. Vista general del fundo</h3>
+              <p>Ubica rápidamente qué lote concentra más señales visuales y por qué empieza la visita en esa zona.</p>
+            </div>
+          </article>
+          <article class="visual-card">
+            <img src="assets/anomaly-closeup.svg" alt="Zoom ilustrado de una zona con menor uniformidad visual" />
+            <div class="visual-copy">
+              <h3>2. Zoom de la zona prioritaria</h3>
+              <p>Muestra el tipo de diferencia visual que AgroLens detecta para que el equipo entienda qué buscar en campo.</p>
+            </div>
+          </article>
+          <article class="visual-card">
+            <img src="assets/healthy-compare.svg" alt="Comparación entre una referencia sana y una zona a validar" />
+            <div class="visual-copy">
+              <h3>3. Comparación con una referencia sana</h3>
+              <p>Hace más fácil identificar cambios de color, densidad de copa o uniformidad antes de salir al lote.</p>
+            </div>
+          </article>
+          <article class="visual-card">
+            <img src="assets/field-inspection.svg" alt="Ilustración de validación en campo" />
+            <div class="visual-copy">
+              <h3>4. Qué se valida en campo</h3>
+              <p>Recuerda que el objetivo final es confirmar riego, hojas, copa y contexto agronómico, no reemplazar la inspección.</p>
+            </div>
+          </article>
+        </div>
       </section>
 
       <section class="map-section" id="mapa">
@@ -362,6 +405,65 @@
             <p>Ayuda a evaluar si el agua está generando producción.</p>
           </article>
         </div>
+      </section>
+
+
+      <section class="section-card simulator-section" id="impacto">
+        <div class="section-title">
+          <div>
+            <span class="overline">Impacto operativo</span>
+            <h2>Simulador rápido de foco de inspección</h2>
+          </div>
+          <p>Úsalo como referencia simple para explicar por qué conviene priorizar una parte del fundo en vez de recorrerlo completo.</p>
+        </div>
+
+        <div class="simulator-grid">
+          <div class="simulator-form">
+            <label>
+              <span>Área total a revisar (ha)</span>
+              <input id="simTotalArea" type="number" min="1" step="0.1" value="18.4" />
+            </label>
+            <label>
+              <span>Área priorizada por AgroLens (ha)</span>
+              <input id="simPriorityArea" type="number" min="0.1" step="0.1" value="1.6" />
+            </label>
+            <label>
+              <span>Tiempo estimado de inspección por ha (min)</span>
+              <input id="simMinutesPerHa" type="number" min="5" step="1" value="35" />
+            </label>
+            <label>
+              <span>Tamaño del equipo (personas)</span>
+              <input id="simTeamSize" type="number" min="1" step="1" value="2" />
+            </label>
+            <label>
+              <span>Costo por hora por persona (S/)</span>
+              <input id="simHourlyCost" type="number" min="1" step="1" value="18" />
+            </label>
+          </div>
+          <div class="simulator-results">
+            <div class="sim-output">
+              <span>Área que no requiere recorrido inicial</span>
+              <strong id="simAreaAvoided">16.8 ha</strong>
+              <small>Área total menos el foco inicial sugerido</small>
+            </div>
+            <div class="sim-output">
+              <span>Horas de visita ahorradas</span>
+              <strong id="simHoursSaved">4.9 h</strong>
+              <small>Comparación entre revisar todo vs revisar primero solo el foco sugerido</small>
+            </div>
+            <div class="sim-output">
+              <span>Costo laboral referencial evitado</span>
+              <strong id="simCostSaved">S/ 176</strong>
+              <small>Estimación basada en equipo y tiempo ingresados</small>
+            </div>
+            <div class="sim-output highlight">
+              <span>Mensaje para el cliente</span>
+              <strong id="simNarrative">El equipo puede empezar por 1.6 ha en vez de recorrer 18.4 ha completas.</strong>
+            </div>
+          </div>
+        </div>
+
+        <p class="sim-note">Estimación operativa referencial. Sirve para ilustrar foco y eficiencia; no reemplaza la medición real de costos del fundo.</p>
       </section>
 
       <section class="section-card pdf-card" id="pdf">
