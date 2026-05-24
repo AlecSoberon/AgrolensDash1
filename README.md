@@ -1,12 +1,10 @@
-# AgroLens Dashboard v7 — Hybrid SaaS Demo
+# AgroLens Dashboard v8
 
-Versión estática lista para GitHub Pages.
+Versión corregida para GitHub Pages.
 
-Qué incluye:
-- Hero tipo startup demo para pilotos e inversionistas.
-- Dashboard completo recuperado: KPIs, mapa, alertas, lotes, tareas, historial, KPIs del rubro, simulador y preview PDF.
-- Imágenes realistas optimizadas para web en `/assets`.
-- Mobile-first y responsive para laptop.
-- Sin backend ni dependencias externas.
-
-Para publicar: sube `index.html`, `styles.css`, `app.js`, `.nojekyll` y la carpeta `/assets` a la raíz del repo con GitHub Pages activado.
+Cambios:
+- Se corrigió la primera sección del hero que no se veía bien.
+- Mejor contraste entre fondo, texto y tarjetas.
+- Mantiene la versión híbrida: demo startup + dashboard completo.
+- Imágenes realistas incluidas en `/assets`.
+- Lista para subir a GitHub Pages.

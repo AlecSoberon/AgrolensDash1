@@ -1231,3 +1231,154 @@ body { background: linear-gradient(180deg, #071b13 0, #102d1f 540px, #f7f4eb 541
   .product-intro-v7 { display: block; }
   .product-intro-v7 .button { margin-top: 1rem; width: 100%; justify-content: center; }
 }
+
+
+/* v8 fix: clear hero contrast and visual hierarchy */
+body {
+  background: linear-gradient(180deg, #fbf8ef 0%, #f7f4eb 52%, #f2efe6 100%) !important;
+}
+.site-header-v7 {
+  background: rgba(6, 27, 18, .94) !important;
+}
+.startup-main-v7 {
+  position: relative;
+  color: #ffffff;
+  background:
+    radial-gradient(circle at 16% 10%, rgba(97, 143, 91, .32), transparent 28rem),
+    radial-gradient(circle at 82% 18%, rgba(196, 223, 159, .16), transparent 30rem),
+    linear-gradient(135deg, #061b12 0%, #0b281b 56%, #0f3424 100%);
+  padding: clamp(2rem, 4vw, 4rem) clamp(1rem, 4vw, 3rem) clamp(2.6rem, 5vw, 4.5rem) !important;
+  overflow: hidden;
+}
+.startup-main-v7::before {
+  content: "";
+  position: absolute;
+  inset: auto -15% -35% -15%;
+  height: 280px;
+  background: radial-gradient(ellipse at center, rgba(219, 239, 201, .13), transparent 70%);
+  pointer-events: none;
+}
+.startup-hero-v7 {
+  position: relative;
+  z-index: 1;
+  min-height: auto !important;
+  padding: clamp(1.5rem, 3vw, 2.4rem) 0 clamp(2rem, 4vw, 3rem);
+}
+.startup-copy-v7 h1 {
+  color: #f5fff0 !important;
+  text-shadow: 0 16px 40px rgba(0,0,0,.22);
+  max-width: 780px;
+}
+.startup-copy-v7 p {
+  color: rgba(245, 255, 240, .82) !important;
+}
+.eyebrow-v7 {
+  background: rgba(223,242,207,.15) !important;
+  color: #e4ffd2 !important;
+  border-color: rgba(223,242,207,.30) !important;
+}
+.startup-actions-v7 .button.primary {
+  background: #dff2cf !important;
+  color: #082016 !important;
+  box-shadow: 0 16px 34px rgba(0,0,0,.22);
+}
+.startup-actions-v7 .button.secondary {
+  background: rgba(223,242,207,.13) !important;
+  color: #f5fff0 !important;
+  border-color: rgba(223,242,207,.22) !important;
+}
+.demo-proof-v7 span {
+  color: rgba(245,255,240,.82) !important;
+  background: rgba(255,255,255,.075) !important;
+  border-color: rgba(255,255,255,.16) !important;
+}
+.startup-visual-v7 {
+  box-shadow: 0 34px 95px rgba(0,0,0,.42) !important;
+}
+.investor-strip-v7,
+.why-demo-v7 {
+  position: relative;
+  z-index: 1;
+}
+.investor-strip-v7 {
+  margin-top: .2rem !important;
+  margin-bottom: 1rem !important;
+  background: rgba(255, 253, 247, .98) !important;
+  box-shadow: 0 22px 70px rgba(0,0,0,.25) !important;
+}
+.investor-strip-v7 h2,
+.investor-strip-v7 .overline {
+  color: var(--green-900) !important;
+}
+.investor-kpis-v7 article {
+  background: #f7f4eb !important;
+  color: var(--text) !important;
+}
+.why-demo-v7 {
+  padding-bottom: 0 !important;
+}
+.why-demo-v7 article {
+  background: rgba(255,255,255,.10) !important;
+  color: #fff !important;
+  border-color: rgba(255,255,255,.16) !important;
+}
+.why-demo-v7 h3 { color: #f5fff0 !important; }
+.why-demo-v7 p { color: rgba(245,255,240,.76) !important; }
+.product-shell-v7 {
+  margin-top: 2rem !important;
+  padding-top: 0;
+}
+.dashboard-anchor-v7 {
+  height: 1px;
+  background: transparent;
+}
+@media (min-width: 1101px) {
+  .startup-hero-v7 {
+    grid-template-columns: minmax(0, .95fr) minmax(420px, .75fr) !important;
+  }
+  .startup-copy-v7 h1 {
+    font-size: clamp(3.1rem, 5.2vw, 5.05rem) !important;
+  }
+}
+@media (max-width: 1100px) {
+  .startup-main-v7 {
+    padding-top: 1.25rem !important;
+  }
+  .startup-hero-v7 {
+    gap: 1.4rem !important;
+  }
+  .startup-copy-v7 h1 {
+    font-size: clamp(2.5rem, 9vw, 4.3rem) !important;
+  }
+}
+@media (max-width: 760px) {
+  body { background: #f7f4eb !important; }
+  .startup-main-v7 {
+    padding: 1.1rem .9rem 1.6rem !important;
+  }
+  .startup-copy-v7 h1 {
+    font-size: clamp(2.35rem, 12vw, 3.65rem) !important;
+    line-height: .98 !important;
+  }
+  .startup-copy-v7 p {
+    font-size: 1rem !important;
+  }
+  .investor-strip-v7 {
+    margin-top: 1rem !important;
+  }
+  .why-demo-v7 article {
+    padding: 1rem !important;
+  }
+  .startup-visual-v7 {
+    min-height: 360px !important;
+  }
+  .startup-visual-v7 img {
+    min-height: 360px !important;
+  }
+  .floating-result-v7.main {
+    top: .75rem; left: .75rem; right: .75rem;
+  }
+  .floating-result-v7.metrics {
+    left: .75rem; right: .75rem; bottom: .75rem;
+  }
+}
